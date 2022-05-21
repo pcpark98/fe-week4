@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ProblemWrapper = styled.button`
   width: 100px;
@@ -13,8 +13,15 @@ const Problem = () => {
   const [count, setCount] = useState(0);
   const [isClick, setIsClick] = useState(false);
 
+  const mounted = useRef(false);
   useEffect(() => {
-    setCount(count + 1);
+    if (!mounted.current) {
+      mounted.current = true;
+    } else {
+      return () => {
+        setCount((current) => current + 1);
+      };
+    }
   }, [isClick]);
 
   return (
