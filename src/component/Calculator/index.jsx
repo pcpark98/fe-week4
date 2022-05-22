@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const CalculatorWrapper = styled.div`
@@ -31,16 +31,16 @@ const ButtonWrapper = styled.div`
 
 const StyledButton = styled.button`
   border: 1px solid grey;
+  background-color: white;
+  &:hover {
+    background-color: #ddfffe;
+  }
 `;
 
 let input = "";
 
 const Calculator = () => {
   const [value, setValue] = useState("");
-
-  //   var inputNumbers = [];
-  //   var operator = "";
-  // 왜 여기에다가 작성하면 안되는거지?
 
   const onClickNumbers = (event) => {
     input = input + event.target.value;
